@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostCon;
+use App\Http\Controllers\postLikeCon;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Auth::routes();
 
 Route::get('/post', [PostCon::class, 'index']);
 Route::post('/writepost', [PostCon::class, 'post']);
+Route::post('/post/{id}',[postLikeCon::class,'store']);

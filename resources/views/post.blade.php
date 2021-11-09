@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container p-4" style="background-color:greenyellow;margin-top:-25px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form action="/writepost" method="post">
@@ -19,10 +19,20 @@
         <div class="col-md-8">
             @if($info->count())
                 @foreach($info as $post)
-                <div class="mb-4 mt-2">
+                <div class="">
                     <a href=""style="text-decoration:none;font-weight:bold;">{{$post->user->name}}</a>
                     <span style="font-size:14px;">{{$post->created_at->diffForHumans()}}</span>
-                    <p>{{$post['body']}}</p>
+                    <p style="font-weight:bold;">{{$post['body']}}</p>
+                </div>
+                <div class="d-flex mb-5">
+                    <form action="/post/{{$post->id}}" method="post">
+                        @csrf
+                        <button class="btn btn-success btn-sm">like</button>
+                    </form>
+                    <form action="" method="post">
+                        @csrf
+                        <button class="btn btn-danger btn-sm">Unlike</button>
+                    </form>
                 </div>
                 @endforeach
             @else
@@ -30,6 +40,16 @@
             @endif
         </div>
     </div>
+    <div class=" row justify-content-center">
+        <div class="col-md-8">
+            {{$info->links()}}
+        </div>
+    </div>
+    <style>
+        .w-5{
+            display:none;
+        }
+    </style>
 
 </div>
 @endsection

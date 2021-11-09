@@ -12,7 +12,7 @@ class PostCon extends Controller
     }
     public function index()
     {   
-        $data = Post::orderBy('created_at','DESC')->get();
+        $data = Post::orderBy('created_at','DESC')->paginate(3);
         return view('post',['info'=>$data]);
     }
     public function post(Request $req){

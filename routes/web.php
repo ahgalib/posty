@@ -23,4 +23,4 @@ Auth::routes();
 
 Route::get('/post', [PostCon::class, 'index']);
 Route::post('/writepost', [PostCon::class, 'post']);
-Route::post('/post/{id}',[postLikeCon::class,'store']);
+Route::post('/post/{post}',[postLikeCon::class,'store']);

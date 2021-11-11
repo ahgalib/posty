@@ -25,14 +25,19 @@
                     <p style="font-weight:bold;">{{$post['body']}}</p>
                 </div>
                 <div class="d-flex mb-5">
+
                     <form action="/post/{{$post->id}}" method="post">
+                    @if(!$post->likedBy(auth()->user()))
                         @csrf
                         <button class="btn btn-success btn-sm">like</button>
                     </form>
+                    @else
                     <form action="" method="post">
                         @csrf
                         <button class="btn btn-danger btn-sm">Unlike</button>
                     </form>
+                    @endif
+                    {{$post->likes->count()}}Like
                 </div>
                 @endforeach
             @else

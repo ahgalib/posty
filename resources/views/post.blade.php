@@ -32,8 +32,9 @@
                         <button class="btn btn-success btn-sm">like</button>
                     </form>
                     @else
-                    <form action="" method="post">
+                    <form action="/post/{{$post->id}}" method="post">
                         @csrf
+                        @method('DELETE')
                         <button class="btn btn-danger btn-sm">Unlike</button>
                     </form>
                     @endif

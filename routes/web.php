@@ -24,3 +24,4 @@ Auth::routes();
 Route::get('/post', [PostCon::class, 'index']);
 Route::post('/writepost', [PostCon::class, 'post']);
 Route::post('/post/{post}',[postLikeCon::class,'store']);
+Route::delete('/post/{post}',[postLikeCon::class,'destroy']);
